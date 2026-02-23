@@ -4,7 +4,7 @@ let today = new Date().toLocaleDateString();
 let saved = localStorage.getItem(today);
 
 let track = {
-    weight: 0,
+    weight: 151,
     food: []
 };
 
@@ -42,4 +42,5 @@ window.alert(`boo`)
 local storage
 localStorage.setItem('The Name',input.value);
 le track_cerealized = json.stringify(track)
+
 */
