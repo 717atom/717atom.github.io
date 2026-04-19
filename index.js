@@ -69,4 +69,24 @@ btnInsert.onclick = function(){
 dateFilter.onchange = function() {
     Log();
 };
+
+document.getElementById("btnAll").onclick = function() {
+    const meals = getMeal();
+
+    if (meals.length === 0) {
+        alert("No meals logged yet!");
+        return;
+    }
+
+    Output.innerHTML = "";
+    meals.forEach(function(meal) {
+        Output.innerHTML += `
+        <p>
+            <strong>${meal.food}</strong> - ${meal.date} <br>
+            Calories: ${meal.calories} | Protein: ${meal.protein}g
+        </p>
+        `;
+    });
+}
+
 Log();
