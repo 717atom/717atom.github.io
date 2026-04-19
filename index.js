@@ -26,7 +26,7 @@ function Log(){
     const totalPro  = selectedMeals.reduce((sum, m) => sum + m.protein, 0);    
     
     totals.innerHTML = `
-        Calories: ${totalCal} kcal <br>
+        Calories: ${totalCal} cal <br>
         Protein: ${totalPro}g <br>
     `;
 
