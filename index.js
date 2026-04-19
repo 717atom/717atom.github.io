@@ -4,7 +4,7 @@ let today = new Date().toLocaleDateString();
 let saved = localStorage.getItem(today);
 
 let track = {
-    weight: 151,
+    weight: 165,
     food: []
 };
 
