@@ -1,46 +1,72 @@
-console.log(`Hello from js`)
-let today = new Date().toLocaleDateString();
+const inpFood = document.getElementById("inpFood");
+const inpDate = document.getElementById("inpDate");
+const inpCalories = document.getElementById("inpCalories");
+const inpProtein = document.getElementById("inpProtein");
+const btnInsert = document.getElementById("btnInsert");
+const Output = document.getElementById("output");
+const totals = document.getElementById("totals");
+const dateFilter = document.getElementById("dateFilter");
+const today = new Date().toISOString().split('T')[0];
+inpDate.value = today;
+dateFilter.value = today;
 
-let saved = localStorage.getItem(today);
-
-let track = {
-    weight: 165,
-    food: []
-};
-
-track.food.push({name: "oatmeal",calories: 150, protien: 5});
-
-let totalCalories = 0;
-
-for (let i = 0; i < track.food.length; i++) {
-    totalCalories += track.food[i].calories;
+function getMeal() {
+    return JSON.parse(localStorage.getItem("foodLog") || "[]");
 }
 
-let track_cerealized = JSON.stringify(track);
+function saveMeals(meals) {
+    localStorage.setItem("foodLog", JSON.stringify(meals));
+}
 
-localStorage.setItem(today,track_cerealized);
+function Log(){
+    let meals = getMeal();
+    let selectedDate = dateFilter.value;
+    let selectedMeals = meals.filter(m => m.date === selectedDate);
+    const totalCal  = selectedMeals.reduce((sum, m) => sum + m.calories, 0);
+    const totalPro  = selectedMeals.reduce((sum, m) => sum + m.protein, 0);    
+    
+    totals.innerHTML = `
+        Calories: ${totalCal} kcal <br>
+        Protein: ${totalPro}g <br>
+    `;
 
-document.getElementById("date").textContent = today;
-document.getElementById('weight').textContent = track.weight;
+    if (selectedMeals.length === 0) {
+        Output.innerHTML = "No meals logged yet.";
+        return;
+    }
+    Output.innerHTML = "";
+    selectedMeals.forEach(function(meal){
+        Output.innerHTML += `
+        <p>
+            <strong>${meal.food}</strong> - ${meal.date} <br>
+            Calories: ${meal.calories} | Protein: ${meal.protein}G
+        </p>  
+        `;
+    });
+}
 
+btnInsert.onclick = function(){
+    const food = inpFood.value.trim();
+    const date = inpDate.value;
+    const calories = parseInt(inpCalories.value);
+    const protein = parseInt(inpProtein.value);
 
+    if(!food || !date || isNaN(calories) || isNaN(protein)) {
+        alert("please fill in all fields!");
+        return;
+    }
 
-console.log(saved);
+    const meals = getMeal();
+    meals.push({ food, date, calories, protein});
+    saveMeals(meals)
 
-
-
-
-
-
-
-
-
-/* will need this later
-window popups
-window.alert(`boo`)
-
-local storage
-localStorage.setItem('The Name',input.value);
-le track_cerealized = json.stringify(track)
-
-*/
+    inpFood.value     = "";
+    inpCalories.value = "";
+    inpProtein.value  = "";
+    inpDate.value     = today;
+    Log();
+};
+dateFilter.onchange = function() {
+    Log();
+};
+Log();

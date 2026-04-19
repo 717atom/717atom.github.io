@@ -6,21 +6,29 @@
     <link rel="stylesheet" href="stye.css">
 </head>
 <body>
-    <div>
-        <h3 id="date"></h3>
-        <p>last known weight: <span id="weight"></span></p>
-        <ul>
-            <li id="Calories">Calories: </li>
-            <li>Protien: </li>
-            <li>Carbs: </li>
-            <li>Fats: </li>
-        </ul>
-    </div>
-    <div>
-        <button>Add Food</button>
-        <button>Change Date</button>
-        <button>Log weight</button>
-    </div>
-    <script src="index.js"></script>
+    <h1>A.T.O.M</h1>
+    <h3>Autonomy Total Optimization Monitor</h3>
+    <fieldset>
+        <legend>Log a meal</legend>
+        <input type="text" id="inpFood" placeholder="Enter meal">
+        <input type="date" id="inpDate">
+        <input type="number" id="inpCalories" placeholder="Calories">
+        <input type="number" id="inpProtein" placeholder="Enter Protein">
+        <br>
+        <button type="button" id="btnInsert">Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Todays Totals</legend>
+        <div id="totals"></div>
+    </fieldset>
+    <fieldset>
+        <legend>Meal Log</legend>
+        <input type="date" id="dateFilter">
+        <div id="output"></div>
+    </fieldset>
+
+
 </body>
+    <script src="index.js"></script>
+
 </html>
