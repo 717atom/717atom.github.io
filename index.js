@@ -24,11 +24,21 @@ function Log(){
     let selectedMeals = meals.filter(m => m.date === selectedDate);
     const totalCal  = selectedMeals.reduce((sum, m) => sum + m.calories, 0);
     const totalPro  = selectedMeals.reduce((sum, m) => sum + m.protein, 0);    
-    
+    let color;
+    if (totalPro > 150 && totalCal < 2000){
+        color = "#22C55E";
+    } else if (totalCal > 2000 && totalPro > 160){
+        color = "#FF9F1A";
+    }
+    else{
+        color="#FF0000";
+    }
     totals.innerHTML = `
+        <p style="color: ${color};"><b>
         Calories: ${totalCal} cal <br>
         Protein: ${totalPro}g <br>
-    `;
+        </b></p>
+        `;
 
     if (selectedMeals.length === 0) {
         Output.innerHTML = "No meals logged yet.";
