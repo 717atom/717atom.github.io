@@ -98,6 +98,7 @@ document.getElementById("btnAll").onclick = function() {
         alert("No workouts logged yet!");
         return;
     }
+    
     const grouped = {};
     workouts.forEach(function(entry){
         if(!grouped[entry.workout]){
@@ -105,6 +106,7 @@ document.getElementById("btnAll").onclick = function() {
         }
         grouped[entry.workout].push(entry);
     })
+    
     Output.innerHTML = "";
     Object.keys(grouped).forEach(function(exerciseName) {
         let setsHTML = "";

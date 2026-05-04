@@ -95,7 +95,10 @@ document.getElementById("btnAll").onclick = function() {
         alert("No meals logged yet!");
         return;
     }
-
+    meals.sort(function(a, b) {
+        return new Date(a.date) - new Date(b.date);
+    });
+    
     Output.innerHTML = "";
     meals.forEach(function(meal) {
         Output.innerHTML += `
