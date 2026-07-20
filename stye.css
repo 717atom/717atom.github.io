@@ -1,8 +1,15 @@
 body {
-    background: #f5f5f3;
+    background: #272726;
 }
-h1, h3, h4{
+
+h1, h3, h4,h5{
     text-align: center;
+    color: #fff;
+
+}
+legend{
+    color: #fff;
+    text-decoration: solid;
 }
 a{
     padding: 7px;
@@ -10,7 +17,6 @@ a{
     border-radius: 6px;
     background-color: #555;
     margin: 2px;
-    color: black;
 }
 #output{
     text-transform: capitalize;
@@ -19,10 +25,12 @@ input, button{
     padding: 7px;
     height: 40px;
     margin: 2px;
+    background-color: #555;
 }
 button{
     width: 150px;
 }
 fieldset{
     margin-bottom: 20px;
+    text-align: center;
 }
