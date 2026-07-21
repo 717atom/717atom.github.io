@@ -15,9 +15,9 @@
     <fieldset>
         <legend>Log a meal</legend>
         <input type="text" id="inpFood" placeholder="Enter meal"><br>
-        <input type="date" id="inpDate"><br>
         <input type="number" id="inpCalories" placeholder="Calories"><br>
         <input type="number" id="inpProtein" placeholder="Enter Protein"><br>
+        <input type="date" id="inpDate"><br>
         
         <button type="button" id="btnInsert">Insert Data</button>
     </fieldset>
@@ -27,6 +27,12 @@
     </fieldset>
     <fieldset>
         <legend>Meals</legend>
+        <input type="date" id="dateFilter"><br>
+        <button type="button" id="btnAll">Show All Meals</button>
+        <div id="output"></div>
+    </fieldset>
+   <fieldset>
+        <legend>Weekly </legend>
         <input type="date" id="dateFilter"><br>
         <button type="button" id="btnAll">Show All Meals</button>
         <div id="output"></div>
