@@ -4,12 +4,12 @@ body {
 
 h1, h3, h4,h5{
     text-align: center;
-    color: #fff;
+    color: #6d6c6c;
     
 
 }
 legend{
-    color: #fff;
+    color: #6d6c6c;
     text-decoration: solid;
 }
 a{
@@ -34,4 +34,7 @@ button{
 fieldset{
     margin-bottom: 20px;
     text-align: center;
+    color: red;
+    border: 2px solid red;
+    border-radius: 10px;
 }
